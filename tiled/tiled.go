@@ -6,7 +6,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
-	"github.com/jakecoffman/cp"
+	"github.com/jakecoffman/cp/v2"
 	"github.com/jakecoffman/cpebiten"
 	"golang.org/x/image/math/f64"
 	"image"

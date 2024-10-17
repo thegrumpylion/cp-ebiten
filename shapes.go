@@ -1,8 +1,6 @@
 package cpebiten
 
-import (
-	"github.com/jakecoffman/cp"
-)
+import "github.com/jakecoffman/cp/v2"
 
 func AddWall(space *cp.Space, body *cp.Body, a, b cp.Vector, radius float64) *cp.Shape {
 	// swap so we always draw the same direction horizontally

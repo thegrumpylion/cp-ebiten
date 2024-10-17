@@ -1,14 +1,20 @@
 module github.com/jakecoffman/cpebiten
 
-go 1.15
+go 1.22.0
 
 require (
-	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20201108214237-06ea97f0c265 // indirect
-	github.com/hajimehoshi/ebiten/v2 v2.1.0-alpha.4.0.20201215174106-e856b236f30e
-	github.com/jakecoffman/cp v1.0.0
-	golang.org/x/exp v0.0.0-20201215153530-b5a6e247da10 // indirect
-	golang.org/x/image v0.18.0
-	golang.org/x/mobile v0.0.0-20201208152944-da85bec010a2 // indirect
+	github.com/hajimehoshi/ebiten/v2 v2.8.1
+	github.com/jakecoffman/cp/v2 v2.1.0
+	golang.org/x/image v0.21.0
+)
+
+require (
+	github.com/ebitengine/gomobile v0.0.0-20241016134836-cc2e38a7c0ee // indirect
+	github.com/ebitengine/hideconsole v1.0.0 // indirect
+	github.com/ebitengine/purego v0.8.0 // indirect
+	github.com/jezek/xgb v1.1.1 // indirect
+	golang.org/x/sync v0.8.0 // indirect
+	golang.org/x/sys v0.26.0 // indirect
 )
 
 //replace (

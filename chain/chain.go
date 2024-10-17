@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/jakecoffman/cp"
+	"github.com/jakecoffman/cp/v2"
 	"github.com/jakecoffman/cpebiten"
 	"log"
 )
@@ -62,7 +62,7 @@ func NewGame() *cpebiten.Game {
 
 		for j = 0; j < linkCount; j++ {
 			pos := cp.Vector{
-				X: screenWidth/2 + 40 * (i - (chainCount-1)/2.0),
+				X: screenWidth/2 + 40*(i-(chainCount-1)/2.0),
 				Y: (j+0.5)*height + (j+1)*spacing,
 			}
 
@@ -75,7 +75,7 @@ func NewGame() *cpebiten.Game {
 				a, b := cp.Vector{0, -height / 2}, cp.Vector{pos.X, 0}
 				constraint = space.AddConstraint(cp.NewSlideJoint(shape.Body(), space.StaticBody, a, b, 0, spacing))
 			} else {
-				a, b := cp.Vector{0, - height / 2}, cp.Vector{0, height / 2}
+				a, b := cp.Vector{0, -height / 2}, cp.Vector{0, height / 2}
 				constraint = space.AddConstraint(cp.NewSlideJoint(shape.Body(), prev, a, b, 0, spacing))
 			}
 
@@ -88,7 +88,7 @@ func NewGame() *cpebiten.Game {
 	}
 
 	radius := 15.0
-	circle := cpebiten.AddCircle(space, cp.Vector{screenWidth/2, screenHeight - 100}, 10, radius)
+	circle := cpebiten.AddCircle(space, cp.Vector{screenWidth / 2, screenHeight - 100}, 10, radius)
 	circle.Body().SetVelocity(0, -300)
 
 	return cpebiten.NewGame(space, 180)

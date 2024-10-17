@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
-	"github.com/jakecoffman/cp"
+	"github.com/jakecoffman/cp/v2"
 	"github.com/jakecoffman/cpebiten"
 	"log"
 )
@@ -49,7 +49,7 @@ func NewGame() *Game {
 	ball := cpebiten.AddCircle(space, cp.Vector{220, 240 + radius + 5}, 10, radius).Body()
 
 	return &Game{
-		Game: cpebiten.NewGame(space, 60),
+		Game:  cpebiten.NewGame(space, 60),
 		scale: scale,
 		ball:  ball,
 	}

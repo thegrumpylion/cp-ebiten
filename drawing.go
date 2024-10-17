@@ -2,7 +2,7 @@ package cpebiten
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/jakecoffman/cp"
+	"github.com/jakecoffman/cp/v2"
 	"math"
 )
 
@@ -42,10 +42,10 @@ func (o *DrawOptions) DrawCircle(pos cp.Vector, angle, radius float64, outline, 
 	r := radius + 1/DrawPointLineScale
 
 	o.verts = append(o.verts,
-		ebiten.Vertex{float32(pos.X - r), float32(pos.Y - r), -1, -1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(pos.X - r), float32(pos.Y + r), -1, 1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(pos.X + r), float32(pos.Y + r), 1, 1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(pos.X + r), float32(pos.Y - r), 1, -1, fill.R, fill.G, fill.B, fill.A},
+		ebiten.Vertex{float32(pos.X - r), float32(pos.Y - r), -1, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(pos.X - r), float32(pos.Y + r), -1, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(pos.X + r), float32(pos.Y + r), 1, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(pos.X + r), float32(pos.Y - r), 1, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
 	)
 	o.indices = append(o.indices,
 		o.cursor+0, o.cursor+1, o.cursor+2,
@@ -84,14 +84,14 @@ func (o *DrawOptions) DrawFatSegment(a, b cp.Vector, radius float64, outline, fi
 	v7 := a.Add(nw.Add(tw))
 
 	o.verts = append(o.verts,
-		ebiten.Vertex{float32(v0.X), float32(v0.Y), 1, -1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(v1.X), float32(v1.Y), 1, 1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(v2.X), float32(v2.Y), 0, -1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(v3.X), float32(v3.Y), 0, 1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(v4.X), float32(v4.Y), 0, -1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(v5.X), float32(v5.Y), 0, 1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(v6.X), float32(v6.Y), -1, -1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(v7.X), float32(v7.Y), -1, 1, fill.R, fill.G, fill.B, fill.A},
+		ebiten.Vertex{float32(v0.X), float32(v0.Y), 1, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(v1.X), float32(v1.Y), 1, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(v2.X), float32(v2.Y), 0, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(v3.X), float32(v3.Y), 0, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(v4.X), float32(v4.Y), 0, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(v5.X), float32(v5.Y), 0, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(v6.X), float32(v6.Y), -1, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(v7.X), float32(v7.Y), -1, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
 	)
 
 	o.indices = append(o.indices,
@@ -130,9 +130,9 @@ func (o *DrawOptions) DrawPolygon(count int, verts []cp.Vector, radius float64, 
 		v2 := verts[i+2].Add(extrude[i+2].offset.Mult(inset))
 
 		o.verts = append(o.verts,
-			ebiten.Vertex{float32(v0.X), float32(v0.Y), 0, 0, fill.R, fill.G, fill.B, fill.A},
-			ebiten.Vertex{float32(v1.X), float32(v1.Y), 0, 0, fill.R, fill.G, fill.B, fill.A},
-			ebiten.Vertex{float32(v2.X), float32(v2.Y), 0, 0, fill.R, fill.G, fill.B, fill.A},
+			ebiten.Vertex{float32(v0.X), float32(v0.Y), 0, 0, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+			ebiten.Vertex{float32(v1.X), float32(v1.Y), 0, 0, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+			ebiten.Vertex{float32(v2.X), float32(v2.Y), 0, 0, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
 		)
 
 		o.indices = append(o.indices, o.cursor+0, o.cursor+1, o.cursor+2)
@@ -166,12 +166,12 @@ func (o *DrawOptions) DrawPolygon(count int, verts []cp.Vector, radius float64, 
 		offset0 := offsetA
 
 		o.verts = append(o.verts,
-			ebiten.Vertex{float32(inner0.X), float32(inner0.Y), 0, 0, fill.R, fill.G, fill.B, fill.A},
-			ebiten.Vertex{float32(inner1.X), float32(inner1.Y), 0, 0, fill.R, fill.G, fill.B, fill.A},
-			ebiten.Vertex{float32(outer0.X), float32(outer0.Y), float32(n1.X), float32(n1.Y), fill.R, fill.G, fill.B, fill.A},
-			ebiten.Vertex{float32(outer1.X), float32(outer1.Y), float32(n1.X), float32(n1.Y), fill.R, fill.G, fill.B, fill.A},
-			ebiten.Vertex{float32(outer2.X), float32(outer2.Y), float32(offset0.X), float32(offset0.Y), fill.R, fill.G, fill.B, fill.A},
-			ebiten.Vertex{float32(outer3.X), float32(outer3.Y), float32(n0.X), float32(n0.Y), fill.R, fill.G, fill.B, fill.A},
+			ebiten.Vertex{float32(inner0.X), float32(inner0.Y), 0, 0, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+			ebiten.Vertex{float32(inner1.X), float32(inner1.Y), 0, 0, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+			ebiten.Vertex{float32(outer0.X), float32(outer0.Y), float32(n1.X), float32(n1.Y), fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+			ebiten.Vertex{float32(outer1.X), float32(outer1.Y), float32(n1.X), float32(n1.Y), fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+			ebiten.Vertex{float32(outer2.X), float32(outer2.Y), float32(offset0.X), float32(offset0.Y), fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+			ebiten.Vertex{float32(outer3.X), float32(outer3.Y), float32(n0.X), float32(n0.Y), fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
 		)
 
 		o.indices = append(o.indices,
@@ -192,10 +192,10 @@ func (o *DrawOptions) DrawDot(size float64, pos cp.Vector, fill cp.FColor, _ int
 	r := size * 0.5 / DrawPointLineScale
 
 	o.verts = append(o.verts,
-		ebiten.Vertex{float32(pos.X - r), float32(pos.Y - r), -1, -1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(pos.X - r), float32(pos.Y + r), -1, 1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(pos.X + r), float32(pos.Y + r), 1, 1, fill.R, fill.G, fill.B, fill.A},
-		ebiten.Vertex{float32(pos.X + r), float32(pos.Y - r), 1, -1, fill.R, fill.G, fill.B, fill.A},
+		ebiten.Vertex{float32(pos.X - r), float32(pos.Y - r), -1, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(pos.X - r), float32(pos.Y + r), -1, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(pos.X + r), float32(pos.Y + r), 1, 1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
+		ebiten.Vertex{float32(pos.X + r), float32(pos.Y - r), 1, -1, fill.R, fill.G, fill.B, fill.A, 0, 0, 0, 0},
 	)
 
 	o.indices = append(o.indices,

@@ -5,7 +5,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
-	"github.com/jakecoffman/cp"
+	"github.com/jakecoffman/cp/v2"
 	"log"
 	"math"
 	"os"
@@ -24,7 +24,7 @@ type Game struct {
 
 	// Accumulator shows the remaining time from the physics tick.
 	Accumulator float64
-	lastTime float64
+	lastTime    float64
 
 	mouseBody  *cp.Body
 	mouseJoint *cp.Constraint
@@ -41,7 +41,7 @@ func NewGame(space *cp.Space, ticksPerSecond float64) *Game {
 		TicksPerSecond: ticksPerSecond,
 		mouseBody:      cp.NewKinematicBody(),
 		touches:        map[ebiten.TouchID]*touchInfo{},
-		FixedUpdate: func() {},
+		FixedUpdate:    func() {},
 	}
 }
 

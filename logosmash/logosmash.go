@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/jakecoffman/cp/v2"
 	"github.com/jakecoffman/cpebiten"
 	"image/color"
 	"log"
 	"math/rand"
 
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/jakecoffman/cp"
 )
 
 const (
@@ -19,7 +19,7 @@ const (
 
 type Game struct {
 	*cpebiten.Game
-	dot   *ebiten.Image
+	dot *ebiten.Image
 }
 
 func NewGame() *Game {
@@ -67,7 +67,7 @@ func NewGame() *Game {
 
 	return &Game{
 		Game: cpebiten.NewGame(space, 60),
-		dot:   dot,
+		dot:  dot,
 	}
 }
 
