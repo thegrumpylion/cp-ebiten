@@ -21,7 +21,7 @@ func AddSegment(space *cp.Space, pos cp.Vector, mass, width, height float64) *cp
 	body := space.AddBody(cp.NewBody(mass, cp.MomentForBox(mass, width, height)))
 	body.SetPosition(pos)
 
-	a, b := cp.Vector{0, (height - width) / 2.0}, cp.Vector{0, (width - height) / 2.0}
+	a, b := cp.Vector{X: 0, Y: (height - width) / 2.0}, cp.Vector{X: 0, Y: (width - height) / 2.0}
 	seg := cp.NewSegment(body, a, b, width/2.0).Class.(*cp.Segment)
 	shape := space.AddShape(seg.Shape)
 	shape.SetElasticity(0)
@@ -40,6 +40,7 @@ func AddBox(space *cp.Space, pos cp.Vector, mass, width, height float64) *cp.Sha
 
 	return shape
 }
+
 func AddStaticBox(space *cp.Space, pos cp.Vector, width, height float64) *cp.Shape {
 	body := space.AddBody(cp.NewKinematicBody())
 	body.SetPosition(pos)

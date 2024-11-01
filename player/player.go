@@ -1,11 +1,12 @@
 package main
 
 import (
+	"log"
+	"math"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/jakecoffman/cp/v2"
 	"github.com/jakecoffman/cpebiten"
-	"log"
-	"math"
 )
 
 const (
@@ -23,16 +24,20 @@ const (
 	PlayerAirAccel     = PlayerVelocity / PlayerAirAccelTime
 
 	JumpHeight      = 50.0
-	JumpBoostHeight = 55.0
+	JumpBoostHeight = 95.0
 	FallVelocity    = 900.0
 	Gravity         = 2000.0
 )
 
-var playerBody *cp.Body
-var playerShape *cp.Shape
+var (
+	playerBody  *cp.Body
+	playerShape *cp.Shape
+)
 
-var remainingBoost float64
-var grounded, lastJumpState bool
+var (
+	remainingBoost          float64
+	grounded, lastJumpState bool
+)
 
 func playerUpdateVelocity(body *cp.Body, gravity cp.Vector, damping, dt float64) {
 	jumpState := ebiten.IsKeyPressed(ebiten.KeyW) || ebiten.IsKeyPressed(ebiten.KeyUp)
@@ -99,10 +104,14 @@ func NewGame() *Game {
 	space.SetGravity(cp.Vector{0, Gravity})
 
 	walls := []cp.Vector{
-		{0, 0}, {0, screenHeight},
-		{screenWidth, 0}, {screenWidth, screenHeight},
-		{0, 0}, {screenWidth, 0},
-		{0, screenHeight}, {screenWidth, screenHeight},
+		{0, 0},
+		{0, screenHeight},
+		{screenWidth, 0},
+		{screenWidth, screenHeight},
+		{0, 0},
+		{screenWidth, 0},
+		{0, screenHeight},
+		{screenWidth, screenHeight},
 	}
 	for i := 0; i < len(walls)-1; i += 2 {
 		shape := space.AddShape(cp.NewSegment(space.StaticBody, walls[i], walls[i+1], 0))
